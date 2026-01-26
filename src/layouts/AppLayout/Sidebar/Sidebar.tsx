@@ -1,70 +1,20 @@
 // components/Sidebar/Sidebar.tsx
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { 
-  faTachometerAlt,
-  faCogs,
-  faUsers,
-  faHistory,
-  faSlidersH,
-  faQuestionCircle,
-  faBolt,
-  faDatabase,
-  faShieldAlt,
-  faChartLine,
-  type IconDefinition
-} from '@fortawesome/free-solid-svg-icons';
+import { faBolt } from '@fortawesome/free-solid-svg-icons';
 import * as S from './SidebarStyles';
+import { MENU_SECTIONS, sectionLabels } from '@/shared/constants/Menu';
+import type { FC } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-interface MenuItem {
-  id: string;
-  label: string;
-  icon: IconDefinition;
-  path: string;
-  badge?: number;
-  section: 'main' | 'tools' | 'settings';
-}
-
-interface SidebarProps {
-    activePath: string,
-    onMenuItemClick: (path: string) => void;
-}
-
-export const Sidebar: React.FC<SidebarProps> = ({
-  activePath = '/',
-  onMenuItemClick,
-}) => {
-  const MENU_ITEMS: MenuItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: faTachometerAlt, path: '/', section: 'main' },
-    { id: 'environment', label: 'Variáveis', icon: faCogs, path: '/environment', badge: 3, section: 'main' },
-    { id: 'users', label: 'Usuários', icon: faUsers, path: '/users', section: 'main' },
-    { id: 'analytics', label: 'Analytics', icon: faChartLine, path: '/analytics', section: 'main' },
-    
-    { id: 'logs', label: 'Logs', icon: faHistory, path: '/logs', section: 'tools' },
-    { id: 'database', label: 'Database', icon: faDatabase, path: '/database', section: 'tools' },
-    { id: 'security', label: 'Segurança', icon: faShieldAlt, path: '/security', section: 'tools' },
-    
-    { id: 'settings', label: 'Configurações', icon: faSlidersH, path: '/settings', section: 'settings' },
-    { id: 'help', label: 'Ajuda', icon: faQuestionCircle, path: '/help', section: 'settings' },
-  ];
+export const Sidebar: FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleMenuItemClick = (path: string) => {
-    if (onMenuItemClick) {
-      onMenuItemClick(path);
-    }
+    navigate(path);
   };
 
-  const menuSections = {
-    main: MENU_ITEMS.filter(item => item.section === 'main'),
-    tools: MENU_ITEMS.filter(item => item.section === 'tools'),
-    settings: MENU_ITEMS.filter(item => item.section === 'settings'),
-  };
-
-  const sectionLabels = {
-    main: 'Principal',
-    tools: 'Ferramentas',
-    settings: 'Sistema',
-  };
+  const activePath = location.pathname;
 
   return (
     <S.SidebarContainer >
@@ -78,7 +28,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       </S.SidebarHeader>
 
       <S.SidebarContent>
-        {Object.entries(menuSections).map(([sectionKey, items]) => (
+        {Object.entries(MENU_SECTIONS).map(([sectionKey, items]) => (
           items.length > 0 && (
             <S.MenuSection key={sectionKey}>
               <S.SectionTitle >

@@ -2,22 +2,25 @@ import { Outlet, useLocation } from 'react-router-dom';
 import * as S from './AppLayoutStyles';
 import { Header } from './Header/Header';
 import { Sidebar } from './Sidebar/Sidebar';
+import { AppPaths } from '@/shared/constants/Paths';
 
 export function AppLayout() {
   const location = useLocation();
 
-  const handleMenuItemClick = (path: string) => {
-    console.log('Navegar para:', path);
-  };
-
   const getPageTitle = (pathname: string): string => {
     const titles: Record<string, string> = {
-      '/': 'Dashboard',
-      '/environment': 'Variáveis de Ambiente',
-      '/users': 'Gerenciar Usuários',
-      '/logs': 'Logs do Sistema',
-      '/settings': 'Configurações',
-      '/help': 'Central de Ajuda',
+      [AppPaths.DASHBOARD]: 'Dashboard',
+      [AppPaths.ENVIRONMENTS]: 'Variáveis de Ambiente',
+      [AppPaths.USERS]: 'Gerenciar Usuários',
+      [AppPaths.ANALYTICS]: 'Relatórios e Métricas',
+
+
+      [AppPaths.LOGS]: 'Logs do Sistema',
+      [AppPaths.DATABASE]: 'Dados e Armazenamento',
+      [AppPaths.SECURITY]: 'Segurança do Sistema',
+
+      [AppPaths.SETTINGS]: 'Configurações',
+      [AppPaths.HELP]: 'Central de Ajuda',
     };
     
     return titles[pathname] || 'Dashboard';
@@ -34,10 +37,7 @@ export function AppLayout() {
 
   return (
     <S.AppContainer>
-      <Sidebar
-        activePath={location.pathname}
-        onMenuItemClick={handleMenuItemClick}
-      />
+      <Sidebar/>
 
       <S.MainContent>
         <Header
