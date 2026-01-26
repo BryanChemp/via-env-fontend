@@ -29,10 +29,9 @@ export const Header: React.FC<HeaderProps> = ({
       <S.HeaderLeft>
         {breadcrumb && (
           <S.Breadcrumb>
-            <span>EnvControl</span> / {breadcrumb}
+            <span>Via Env</span> / {breadcrumb}
           </S.Breadcrumb>
         )}
-        <S.HeaderTitle>{title}</S.HeaderTitle>
       </S.HeaderLeft>
       
       <S.HeaderRight>

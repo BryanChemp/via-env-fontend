@@ -28,7 +28,7 @@ export const HeaderRight = styled.div`
 
 export const Breadcrumb = styled.div`
   color: ${({ theme }) => theme.colors.textSecondary};
-  font-size: ${({ theme }) => theme.typography.sizes.sm}px;
+  font-size: ${({ theme }) => theme.typography.sizes.base}px;
   font-weight: ${({ theme }) => theme.typography.weights.normal};
   
   span {
