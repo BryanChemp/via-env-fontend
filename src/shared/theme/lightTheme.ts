@@ -25,7 +25,7 @@ export const lightTheme: Theme = {
         backgroundCard: '#FFFFFF',
 
         // Cores de texto
-        text: '#1A1A1A',
+        text: '#1F2937',
         textSecondary: '#666666',
         textLight: '#999999',
         textInverted: '#FFFFFF',

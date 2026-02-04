@@ -1,4 +1,5 @@
 import { Environments } from "@/features/environments/Environments";
+import { Users } from "@/features/users/Users";
 import { AppLayout } from "@/layouts/AppLayout/AppLayout";
 import { AuthLayout } from "@/layouts/AuthLayout/AuthLayout";
 import { AppPaths, AuthPaths } from "@/shared/constants/Paths";
@@ -18,7 +19,7 @@ export function AppRoutes() {
             <Route index element={<></>} />
             <Route path={AppPaths.DASHBOARD} element={<></>} />
             <Route path={AppPaths.ENVIRONMENTS} element={<Environments/>} />
-            <Route path={AppPaths.USERS} element={<></>} />
+            <Route path={AppPaths.USERS} element={<Users/>} />
             <Route path={AppPaths.ANALYTICS} element={<></>} />
 
             <Route path={AppPaths.LOGS} element={<></>} />
