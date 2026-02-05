@@ -75,7 +75,6 @@ export function Users() {
   const [activeTab, setActiveTab] = useState<Tab>(mockTabs[0]);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Lógica de filtro combinada (Tab + Busca)
   const filteredUsers = mockUsers
     .filter(user => {
       if (activeTab.id === 'all') return true;

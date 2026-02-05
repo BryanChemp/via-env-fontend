@@ -22,7 +22,6 @@ interface MenuItem {
 }
 
 export const MENU_ITEMS: MenuItem[] = [
-    { id: 'dashboard', label: 'Dashboard', icon: faTachometerAlt, path: AppPaths.DASHBOARD, section: 'main' },
     { id: 'environment', label: 'Variáveis', icon: faCogs, path: AppPaths.ENVIRONMENTS, badge: 3, section: 'main' },
     { id: 'users', label: 'Usuários', icon: faUsers, path: AppPaths.USERS, section: 'main' },
     { id: 'analytics', label: 'Analytics', icon: faChartLine, path: AppPaths.ANALYTICS, section: 'main' },
